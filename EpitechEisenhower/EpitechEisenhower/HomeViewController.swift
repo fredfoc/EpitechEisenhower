@@ -26,6 +26,8 @@ class HomeViewController: UICollectionViewController {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "autreCell", for: indexPath)
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellReuseId", for: indexPath)
+            let customCell = cell as? CustomCell
+            customCell?.myTitle.text = "fred"
         }
         return cell
     }
