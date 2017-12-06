@@ -10,11 +10,19 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var passwordBGView: UIView!
+    @IBOutlet weak var emailBGView: UIView!
+    @IBOutlet weak var height: NSLayoutConstraint!
     @IBOutlet weak var connectButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
-        connectButton.layer.cornerRadius = 5
+        emailBGView.layer.cornerRadius = 10
+        passwordBGView.layer.cornerRadius = 10
+        connectButton.layer.cornerRadius = 10
+        
+        signInButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,6 +33,15 @@ class LoginViewController: UIViewController {
 
     @IBAction func connect(_ sender: Any) {
         performSegue(withIdentifier: "showHome", sender: nil)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showHome" {
+            if let destination = segue.destination as? HomeViewController {
+                destination.monTitre = "truc"
+            }
+        }
     }
     
 }
