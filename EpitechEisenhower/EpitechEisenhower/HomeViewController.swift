@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UICollectionViewController {
     var monTitre: String?
@@ -18,6 +19,15 @@ class HomeViewController: UICollectionViewController {
         content.append(TaskModel(titre: "Fred"))
         content.append(TaskModel(titre: "Simon"))
         content.append(TaskModel(titre: "Alex"))
+        
+        Alamofire.request("https://api.randomuser.me/?nat=US&results=5").responseString { (toto) in
+            switch toto.result {
+            case .success(let titi):
+                print(titi)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

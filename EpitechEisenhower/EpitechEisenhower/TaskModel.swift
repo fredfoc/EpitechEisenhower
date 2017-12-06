@@ -8,9 +8,10 @@
 
 import Foundation
 
-class TaskModel {
+struct TaskModel {
     private(set) var titre: String
-    init(titre:String) {
-        self.titre = titre
+    
+    mutating func newTitle(title:String) {
+        self.titre = title
     }
 }
